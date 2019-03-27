@@ -7,11 +7,13 @@ export default function Introduction(props) {
     <div className="introduction">
       <div className="introduction__text-content">
         <Typist
+          avgTypingDelay={40}
           onTypingDone={props.toggleShowMenu}
+          onCharacterTyped={props.setShowMobileMenu}
           cursor={{ hideWhenDone: true, hideWhenDoneDelay: 3000 }}
         >
           <Typist.Delay ms={1500} />
-          <span>Hi</span>
+          <span>Hello there</span>
           <Typist.Delay ms={2000} />
           <span>, my name's Mateusz.</span>
           <Typist.Delay ms={1500} />
@@ -21,14 +23,16 @@ export default function Introduction(props) {
           <Typist.Delay ms={1500} />
           <br />
           <span>
-            The last year of my life was dedicated solely for becoming an
-            employable software programmer.
+            The last year of my life was dedicated solely for becoming
+            <br />
+            an employable software programmer.
           </span>
           <Typist.Delay ms={1500} />
           <br />
           <br />
           <span>
-            Please take a moment to check out the effects of my endevours.
+            Please take a moment to check out the effects of
+            <br /> my endevours.
           </span>
         </Typist>
       </div>
