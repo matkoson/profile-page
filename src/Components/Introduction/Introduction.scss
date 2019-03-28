@@ -1,5 +1,9 @@
 .introduction {
+  padding-left: 20px;
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
+  &__text-content {
+    transition: opacity 3s ease-in;
+  }
 }

@@ -10,7 +10,8 @@
   margin-top: 20px;
   transition: all 0.3s ease-in;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
+  margin-top: 50px;
   &__mobile-list {
     transition: all 0.15s ease-in;
     padding-left: 10px;
@@ -35,7 +36,7 @@
   &__burger {
     height: 1px;
     position: fixed;
-    background: #94998d;
+    // background: #94998d;
     z-index: 1;
     right: 20px;
     top: 27px;
@@ -49,7 +50,7 @@
       width: inherit;
       right: 0;
       left: 0;
-      background: #94998d;
+      background: inherit;
       top: 11px;
       transition: all 0.5s ease-in;
     }
@@ -60,12 +61,13 @@
       width: inherit;
       left: 0;
       right: 0;
-      background: #94998d;
-      bottom: 12px;
+      background: inherit;
+      bottom: 11px;
       transition: all 0.3s ease-in;
     }
     &--clicked {
-      background: transparent;
+      transition: all 0.3s ease-in;
+      height: 0;
       &:before {
         left: 4px;
         transform-origin: 0 50%;

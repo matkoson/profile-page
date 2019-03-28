@@ -12,7 +12,11 @@ class App extends Component {
       colorMenu: false,
       activeMenuItem: "introduction",
       showMobileMenu: false,
-      openMobileMenu: false
+      openMobileMenu: false,
+      showDesktopMenu: false,
+      lettersCounter: 0,
+      opacityDimmer: null,
+      blinkBurger: false
     };
   }
 
@@ -24,17 +28,28 @@ class App extends Component {
       default:
         navigateTo = (
           <Introduction
-            toggleShowMenu={() =>
-              this.setState({
-                showMenu: !this.state.showMenu
-              })
-            }
-            setShowMobileMenu={(char, pos) => {
-              if (pos === 10 && char === "e") {
-                return this.setState({
-                  showMobileMenu: !this.state.showMobileMenu
+            opacityDimmer={this.state.opacityDimmer}
+            typingDoneCB={() => {
+              if (window.innerWidth < 820) {
+                this.setState({
+                  showDesktopMenu: !this.state.showMenu,
+                  opacityDimmer: { opacity: 0.4 },
+                  blinkBurger: true
+                });
+              } else {
+                this.setState({
+                  showDesktopMenu: !this.state.showMenu
                 });
               }
+            }}
+            setShowMobileMenu={(char, pos) => {
+              return this.setState(state => {
+                if (this.state.lettersCounter > 10) return;
+                return {
+                  lettersCounter: state.lettersCounter + 1,
+                  showMobileMenu: state.lettersCounter === 10 ? true : false
+                };
+              });
             }}
           />
         );
@@ -42,6 +57,8 @@ class App extends Component {
     return (
       <div className="app">
         <SideMenu
+          blinkBurger={this.state.blinkBurger}
+          className="side-menu"
           showMobileMenu={this.state.showMobileMenu}
           openMobileMenu={this.state.openMobileMenu}
           activeMenuItem={this.state.activeMenuItem}

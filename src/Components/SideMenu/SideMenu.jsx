@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./SideMenu.scss";
 import { useTransition, animated } from "react-spring";
+
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+  useEffect(
+    () => {
+      savedCallback.current = callback;
+    },
+    [callback]
+  );
+  useEffect(
+    () => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        timerId = id;
+        return () => clearInterval(id);
+      }
+    },
+    [delay]
+  );
+}
+var timerId;
 export default function SideMenu(reactProps) {
+  const [blinkStyle, setBlinkStyle] = useState({ background: "#94998d" });
+  const cb = () => {
+    if (reactProps.blinkBurger)
+      blinkStyle.background === "red"
+        ? setBlinkStyle({
+            background: "#94998d"
+          })
+        : setBlinkStyle({ background: "red" });
+  };
+  useInterval(cb, 3000);
+
   let menuItems = [
     ["Introduction", "introduction"],
     ["Certification", "certification"],
@@ -22,7 +57,7 @@ export default function SideMenu(reactProps) {
     if (e[1] === reactProps.activeMenuItem) {
       if (reactProps.colorMenu) {
         liItem = (
-          <span className="side-menu__item__text" style={{ color: "#949da8" }}>
+          <span className="side-menu__item__text" style={{ color: "#b0b7bf" }}>
             {e[0]}
           </span>
         );
@@ -47,41 +82,55 @@ export default function SideMenu(reactProps) {
       </div>
     );
   });
-  return window.innerWidth > 820
-    ? transition.map(({ props }) => (
-        <animated.div key="side-menuabv820" style={props} className="side-menu">
-          {menuItems}
-        </animated.div>
-      ))
-    : burgerInbound.map(({ item, props }) => {
-        return (
-          <div key="side-menu" className="side-menu">
-            {item && (
-              <div
-                onClick={reactProps.toggleOpenMobileMenu}
-                className={"side-menu__burger-wrapper"}
-              >
-                <animated.span
-                  key="burger"
-                  style={props}
-                  className={
-                    !reactProps.openMobileMenu
-                      ? "side-menu__burger"
-                      : "side-menu__burger--clicked side-menu__burger "
-                  }
-                />
-              </div>
-            )}
-            <div
-              className={
-                reactProps.openMobileMenu
-                  ? "side-menu__mobile-list side-menu__mobile-list--revealed"
-                  : "side-menu__mobile-list"
-              }
-            >
+  return (
+    <div className="side-menu" key="side-menu">
+      {window.innerWidth > 820 ? (
+        <React.Fragment key="desktop">
+          {transition.map(({ props }) => (
+            <animated.div key="side-menuabv820" style={props}>
               {menuItems}
-            </div>
+            </animated.div>
+          ))}
+        </React.Fragment>
+      ) : (
+        <React.Fragment key="mobile">
+          {burgerInbound.map(
+            ({ item, props }) =>
+              item && (
+                <div
+                  key="burger"
+                  onClick={() => {
+                    reactProps.toggleOpenMobileMenu();
+                    clearInterval(timerId);
+                    setBlinkStyle({
+                      background: "#94998d"
+                    });
+                  }}
+                  className={"side-menu__burger-wrapper"}
+                >
+                  <animated.span
+                    style={Object.assign({}, blinkStyle, props)}
+                    className={
+                      !reactProps.openMobileMenu
+                        ? "side-menu__burger"
+                        : "side-menu__burger--clicked side-menu__burger "
+                    }
+                  />
+                </div>
+              )
+          )}
+
+          <div
+            className={
+              reactProps.openMobileMenu
+                ? "side-menu__mobile-list side-menu__mobile-list--revealed"
+                : "side-menu__mobile-list"
+            }
+          >
+            {menuItems}
           </div>
-        );
-      });
+        </React.Fragment>
+      )}
+    </div>
+  );
 }
