@@ -9,12 +9,12 @@ import {
   config,
   useTrail
 } from "react-spring";
-import GIF1 from "../../assets/GIF/optimizedMobileGIF1.gif";
+import GIFSlider from "./GifSlider";
 
 export default function MainProject(props) {
   const imgMeasurements =
     window.innerWidth < 820
-      ? { width: "180px", height: "180px" }
+      ? { width: "150px", height: "150px" }
       : { width: "300px", height: "300px" };
   const { height, width } = imgMeasurements;
   const logoTransitionRef = useRef();
@@ -85,27 +85,7 @@ export default function MainProject(props) {
           </animated.div>
         ))}
       </div>
-      {gifTransition.map(({ props }) => (
-        <animated.div
-          style={props}
-          key="gif1"
-          className="main-project__GIF-slider"
-        >
-          <div className="main-project__GIF-slider__mobile-desktop">
-            <span>mobile</span>
-            <span>desktop</span>
-          </div>
-          <div className="main-project__GIF-slider__GIFS">
-            <img
-              height="380px"
-              width="200px"
-              src={GIF1}
-              alt=""
-              className="main-project__GIF-slider__GIFS__GIF"
-            />
-          </div>
-        </animated.div>
-      ))}
+      <GIFSlider gifTransition={gifTransition} />
     </div>
   );
 }

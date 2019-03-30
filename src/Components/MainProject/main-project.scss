@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
   &__landing {
     height: 30vh;
     display: flex;
@@ -30,17 +32,32 @@
     }
   }
   &__GIF-slider {
+    width: 100vw;
+    height: 400px;
     &__mobile-desktop {
       display: flex;
-      width: 200px;
       justify-content: space-between;
       margin-bottom: 20px;
     }
     &__GIFS {
-      border-radius: 15px;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
-      opacity: 0.6;
-      border: 5px solid #fff;
+      position: fixed;
+      top: 130px;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      &__GIF {
+        will-change: transform;
+        border-radius: 15px;
+        overflow: hidden;
+        opacity: 0.6;
+        border: 5px solid #fff;
+        margin: 0 auto;
+        position: absolute;
+      }
     }
   }
 }
