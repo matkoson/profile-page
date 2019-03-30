@@ -3,6 +3,7 @@ import "./App.scss";
 import Introduction from "./Components/Introduction/Introduction";
 import SideMenu from "./Components/SideMenu/SideMenu";
 import Certification from "./Components/Certification/Certification";
+import MainProject from "./Components/MainProject/MainProject";
 
 let navigateTo;
 class App extends Component {
@@ -24,6 +25,9 @@ class App extends Component {
     switch (this.state.activeMenuItem) {
       case "certification":
         navigateTo = <Certification />;
+        break;
+      case "main-project":
+        navigateTo = <MainProject />;
         break;
       default:
         navigateTo = (

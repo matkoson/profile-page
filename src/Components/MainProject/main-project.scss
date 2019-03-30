@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Anodina-Light";
+  src: local("Anodina-Light"), url("../../assets/fonts/Anodina-Light.woff2") format("woff2"),
+    url("../../assets/fonts/Anodina-Light.woff") format("woff");
+  font-display: swap;
+}
+
+.main-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__landing {
+    height: 30vh;
+    display: flex;
+    &__logo {
+      align-self: flex-end;
+      margin-bottom: 20px;
+    }
+  }
+  &__title {
+    font-family: "Anodina-Light";
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 40px;
+    &__element {
+      margin-right: 5px;
+    }
+  }
+  &__GIF-slider {
+    &__mobile-desktop {
+      display: flex;
+      width: 200px;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    &__GIFS {
+      border-radius: 15px;
+      overflow: hidden;
+      opacity: 0.6;
+      border: 5px solid #fff;
+    }
+  }
+}
