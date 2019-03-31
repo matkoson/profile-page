@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./SideMenu.scss";
+import "./side-menu.scss";
 import { useTransition, animated } from "react-spring";
 
 function useInterval(callback, delay) {

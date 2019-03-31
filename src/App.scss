@@ -18,9 +18,16 @@
   box-sizing: border-box;
 }
 .app {
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+  a:hover {
+    cursor: pointer;
+  }
   font-family: "Fira-Code-Regular";
   color: #fff;
-  max-width: 100vw;
+  max-width: 100%;
   // overflow: hidden;
   @include abv820px {
     max-width: 600px;

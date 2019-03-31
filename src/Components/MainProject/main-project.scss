@@ -9,14 +9,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  max-width: 100%;
+  width: 100%;
+  &__tech-stack-title {
+    margin-bottom: 15px;
+  }
   &__landing {
     height: 30vh;
     display: flex;
     &__logo {
       align-self: flex-end;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
   }
   &__title {
@@ -31,33 +34,29 @@
       margin-right: 5px;
     }
   }
-  &__GIF-slider {
-    width: 100vw;
-    height: 400px;
-    &__mobile-desktop {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
+  &__desktop-view {
+    &__title {
+      text-align: center;
+      display: block;
+      margin-bottom: 10px;
     }
-    &__GIFS {
-      width: 100%;
-      height: 100%;
+    &__img {
+      border: 5px solid #fff;
+      border-radius: 15px;
       overflow: hidden;
-      position: fixed;
-      top: 130px;
-      left: 0;
-      bottom: 0;
+      // height: 400px;
+    }
+  }
+  &__code-sources {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    color: #fff;
+    &__img-title {
       display: flex;
-      justify-content: center;
-      &__GIF {
-        will-change: transform;
-        border-radius: 15px;
-        overflow: hidden;
-        opacity: 0.6;
-        border: 5px solid #fff;
-        margin: 0 auto;
-        position: absolute;
-      }
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
   }
 }
