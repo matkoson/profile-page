@@ -1,8 +1,8 @@
 import React from "react";
 import { useSpring, animated, config } from "react-spring";
-import FFC from "../../assets/free-code-camp-brands.svg";
-import HK from "../../assets/hackerrank-brands.svg";
-import GITHUB from "../../assets/github-brands.svg";
+import FFC from "../../assets/SVG/free-code-camp-brands.svg";
+import HK from "../../assets/SVG/hackerrank-brands.svg";
+import GITHUB from "../../assets/SVG/github-brands.svg";
 import "./Certification.scss";
 import Typist from "react-typist";
 

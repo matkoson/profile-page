@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import "../MainProject/main-project.scss";
-import SPOTIFY from "../../assets/spotify-brands.svg";
+import SPOTIFY from "../../assets/SVG/spotify-brands.svg";
+import GITHUB from "../../assets/SVG/github-brands.svg";
+import FIREBASE from "../../assets/SVG/firebase-brands.svg";
 import {
   animated,
   useTransition,
@@ -9,15 +11,26 @@ import {
   config,
   useTrail
 } from "react-spring";
-import GIFSlider from "./GifSlider";
+import GIFSlider from "./GIFSlider/GIFSlider";
+import TechStack from "./TechStack/TechStack";
+import DeskopView from "../../assets/DesktopView.png";
 
 export default function MainProject(props) {
+  const techTransitionLeftRef = useRef();
+  const techTransitionRightRef = useRef();
+  const springRef = useRef();
+  const logoTransitionRef = useRef();
+  const techStackTitleTransitionRef = useRef();
+  const trailRef = useRef();
+  const gifTransitionRef = useRef();
+  const desktopViewTransitionRef = useRef();
+  //
   const imgMeasurements =
     window.innerWidth < 820
       ? { width: "150px", height: "150px" }
       : { width: "300px", height: "300px" };
   const { height, width } = imgMeasurements;
-  const logoTransitionRef = useRef();
+  //
   const logoTransition = useTransition(null, null, {
     from: {
       opacity: 0,
@@ -26,7 +39,22 @@ export default function MainProject(props) {
     enter: { opacity: 1, transform: "translate3d(0px,0px,0px)" },
     ref: logoTransitionRef
   });
-  const springRef = useRef();
+  const techStackTitleTransition = useTransition(null, "tech-stack-title", {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    ref: techStackTitleTransitionRef
+  });
+  const desktopViewTransition = useTransition(null, "desktop-view", {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    ref: desktopViewTransitionRef
+  });
+  const gifTransition = useTransition(null, null, {
+    from: { opacity: 0, transform: "translate3d(-40px,0px,0px)" },
+    enter: { opacity: 1, transform: "translate3d(0px,0px,0px)" },
+    config: config.molasses,
+    ref: gifTransitionRef
+  });
   const wobbleProps = useSpring({
     from: { opacity: 1, transform: "translate3d(0px,0px,0px)" },
     to: async next => {
@@ -43,7 +71,6 @@ export default function MainProject(props) {
     <animated.span>React</animated.span>,
     <animated.span>Client</animated.span>
   ];
-  const trailRef = useRef();
   const trail = useTrail(revealElements.length, {
     config: config.molasses,
     opacity: 1,
@@ -51,14 +78,17 @@ export default function MainProject(props) {
     ref: trailRef,
     delay: 1500
   });
-  const gifTransitionRef = useRef();
-  const gifTransition = useTransition(null, null, {
-    from: { opacity: 0, transform: "translate3d(-40px,0px,0px)" },
-    enter: { opacity: 1, transform: "translate3d(0px,0px,0px)" },
-    config: config.molasses,
-    ref: gifTransitionRef
-  });
-  useChain([logoTransitionRef, springRef, trailRef, gifTransitionRef]);
+  useChain([
+    logoTransitionRef,
+    springRef,
+    trailRef,
+    techStackTitleTransitionRef,
+    techTransitionLeftRef,
+    techTransitionRightRef,
+    desktopViewTransitionRef,
+    gifTransitionRef
+  ]);
+
   return (
     <div className="main-project">
       <animated.div style={wobbleProps} className="main-project__landing">
@@ -85,7 +115,62 @@ export default function MainProject(props) {
           </animated.div>
         ))}
       </div>
+      {techStackTitleTransition.map(({ props, key }) => (
+        <animated.span
+          key={key}
+          style={props}
+          className="main-project__tech-stack-title"
+        >
+          Tech Stack used in the project
+        </animated.span>
+      ))}
+
+      <TechStack
+        techTransitionLeftRef={techTransitionLeftRef}
+        techTransitionRightRef={techTransitionRightRef}
+      />
+      <div className="main-project__desktop-view">
+        {desktopViewTransition.map(({ props, key }) => (
+          <React.Fragment key={key}>
+            <animated.span
+              style={props}
+              className="main-project__desktop-view__title"
+            >
+              Desktop view
+            </animated.span>
+
+            <div className="main-project__desktop-view__img">
+              <animated.img
+                width="350px"
+                style={props}
+                src={DeskopView}
+                alt=""
+              />
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
       <GIFSlider gifTransition={gifTransition} />
+      <div className="main-project__code-sources">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/matkoson/Spotify-React-Client"
+          className="main-project__code-sources__img-title"
+        >
+          <img height="150px" width="150px" src={GITHUB} alt="" />
+          <span>Repository</span>
+        </a>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://react-spotify-client.firebaseapp.com"
+          className="main-project__code-sources__img-title"
+        >
+          <img height="150px" width="150px" src={FIREBASE} alt="" />
+          <span>Deployed</span>
+        </a>
+      </div>
     </div>
   );
 }
