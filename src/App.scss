@@ -1,0 +1,54 @@
+@import "./Components/Mixins.scss";
+
+@font-face {
+  font-family: "Fira-Code-Light";
+  src: local("Fira-Code-Light"), url("./assets/fonts/FiraCode-Light.woff2") format("woff2"),
+    url("./assets/fonts/FiraCode-Light.woff2") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira-Code-Regular";
+  src: local("Fira-Code-Regular"), url("./assets/fonts/FiraCode-Regular.woff2") format("woff2"),
+    url("./assets/fonts/FiraCode-Regular.woff2") format("woff");
+  font-display: swap;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app {
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+  a:hover {
+    cursor: pointer;
+  }
+  font-family: "Fira-Code-Regular";
+  color: #fff;
+  max-width: 100%;
+  // overflow: hidden;
+  @include abv820px {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+  &__main-container {
+    margin-top: 60px;
+    transition: all 0.2s ease-in;
+    visibility: visible;
+    @include abv820px {
+      margin-left: 20px;
+    }
+    &--fading-out {
+      transform: scale(0.85);
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease-in;
+    }
+    @include abv820px {
+      width: 80%;
+    }
+  }
+}

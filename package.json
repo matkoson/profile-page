@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lodash-es": "^4.17.11",
+    "node-sass": "^4.11.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-spring": "^8.0.18",
+    "react-typist": "^2.0.5",
+    "react-with-gesture": "^4.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
