@@ -3,7 +3,7 @@
   overflow: hidden;
   top: 90px;
   left: 0;
-  height: 400px;
+  min-height: 800px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -22,6 +22,12 @@
         border-radius: 15px;
         overflow: hidden;
         line-height: 0;
+      }
+      &__code-source {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 13px;
       }
     }
   }

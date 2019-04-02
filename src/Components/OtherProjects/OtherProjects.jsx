@@ -6,14 +6,31 @@ import "./other-projects.scss";
 import MobileDrumMachine from "../../assets/Mobile-drum-machine.png";
 import MobileJavaScriptCalculator from "../../assets/Mobile-js-calc.png";
 import MobilePomodoroClock from "../../assets/Mobile-pomodoro-clock.png";
+import PortfolioPage from "../../assets/Mobile-portfolio-page.png";
 import GITHUB from "../../assets/SVG/github-brands.svg";
 
 export default function OtherProjects(reactProps) {
   const items = [
-    { src: MobileDrumMachine, name: "mobile-drum-machine", href: "" },
-    { src: MobileJavaScriptCalculator, name: "mobile-js-calc", href: "" },
-    { src: MobilePomodoroClock, name: "mobile-pomodoro-clock", href: "" },
-    { src: null, name: "portfolio-page", href: "" }
+    {
+      src: MobileDrumMachine,
+      name: "mobile-drum-machine",
+      href: "https://github.com/matkoson/FCC-drum-machine"
+    },
+    {
+      src: MobileJavaScriptCalculator,
+      name: "mobile-js-calc",
+      href: "https://github.com/matkoson/FCC-javaScript-calculator"
+    },
+    {
+      src: MobilePomodoroClock,
+      name: "mobile-pomodoro-clock",
+      href: "https://github.com/matkoson/FCC-pomodoro-clock"
+    },
+    {
+      src: PortfolioPage,
+      name: "portfolio-page",
+      href: "https://github.com/matkoson/profile-page"
+    }
   ];
   const index = useRef(0);
   const [sliderProps, setSliderProps] = useSprings(items.length, i => ({
@@ -78,8 +95,8 @@ export default function OtherProjects(reactProps) {
               )}
             </div>
             <a target="_blank" rel="noopener noreferrer" href={items[i].href}>
-              <div className="other-projects__swap-wrapper__join-wrapper__code-sources">
-                <img src={GITHUB} alt="" />
+              <div className="other-projects__swap-wrapper__join-wrapper__code-source">
+                <img height="120px" width="120px" src={GITHUB} alt="" />
                 <span>GitHub repository + live version</span>
               </div>
             </a>
