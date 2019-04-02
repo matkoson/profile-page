@@ -12,6 +12,13 @@ import GITHUB from "../../assets/SVG/github-brands.svg";
 export default function OtherProjects(reactProps) {
   const items = [
     {
+      src: PortfolioPage,
+      name: "Portfolio Page",
+      href: "https://github.com/matkoson/profile-page",
+      text: "Swipe left ⬅",
+      width: "210px"
+    },
+    {
       src: MobileDrumMachine,
       name: "Drum Machine",
       href: "https://github.com/matkoson/FCC-drum-machine",
@@ -26,13 +33,7 @@ export default function OtherProjects(reactProps) {
     {
       src: MobilePomodoroClock,
       name: "Pomodoro Clock",
-      href: "https://github.com/matkoson/FCC-pomodoro-clock",
-      text: "Swipe left ⬅"
-    },
-    {
-      src: PortfolioPage,
-      name: "Portfolio Page",
-      href: "https://github.com/matkoson/profile-page"
+      href: "https://github.com/matkoson/FCC-pomodoro-clock"
     }
   ];
   const index = useRef(0);
@@ -68,48 +69,43 @@ export default function OtherProjects(reactProps) {
 
   return (
     <div className="other-projects">
-      {sliderProps.map(({ x, display, sc }, i) => (
-        <animated.div
-          {...bind()}
-          key={i}
-          style={{
-            display,
-            transform: x.interpolate(x => `translate3d(${x}px,0,0)`)
-          }}
-          className="other-projects__swap-wrapper"
-        >
-          <div className="other-projects__swap-wrapper__join-wrapper  ">
-            <span className="other-projects__swap-wrapper__join-wrapper__text">
-              {items[i].text && items[i].text}
-            </span>
-            <div className="other-projects__swap-wrapper__join-wrapper__img">
-              {items[i].src ? (
-                <animated.img
-                  height="380px"
-                  width="280px"
-                  src={items[i].src}
-                  alt=""
-                  className="other-projects__swap-wrapper__join-wrapper__img__item"
-                />
-              ) : (
-                <div
-                  className="other-projects__swap-wrapper__join-wrapper__img__item"
-                  style={{ height: "380px", width: "280px" }}
-                >
-                  This page
-                </div>
-              )}
-            </div>
-            <a target="_blank" rel="noopener noreferrer" href={items[i].href}>
-              <div className="other-projects__swap-wrapper__join-wrapper__code-source">
-                <span>{items[i].name}</span>
-                <img height="100px" width="100px" src={GITHUB} alt="" />
-                <span>GitHub repository + live version</span>
+      <div className="other-projects__slider-wrapper">
+        {sliderProps.map(({ x, display, sc }, i) => (
+          <animated.div
+            {...bind()}
+            key={i}
+            style={{
+              display,
+              transform: x.interpolate(x => `translate3d(${x}px,0,0)`)
+            }}
+            className="other-projects__slider-wrapper__swap-wrapper"
+          >
+            <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper  ">
+              <span className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__text">
+                {items[i].text && items[i].text}
+              </span>
+              <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img">
+                {
+                  <animated.img
+                    height="380px"
+                    width={items[i].width ? items[i].width : "280px"}
+                    src={items[i].src}
+                    alt=""
+                    className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img__item"
+                  />
+                }
               </div>
-            </a>
-          </div>
-        </animated.div>
-      ))}
+              <a target="_blank" rel="noopener noreferrer" href={items[i].href}>
+                <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__code-source">
+                  <span>{items[i].name}</span>
+                  <img height="100px" width="100px" src={GITHUB} alt="" />
+                  <span>GitHub repository + live version</span>
+                </div>
+              </a>
+            </div>
+          </animated.div>
+        ))}
+      </div>
     </div>
   );
 }

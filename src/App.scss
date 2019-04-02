@@ -31,6 +31,7 @@
   a:hover {
     cursor: pointer;
   }
+  max-width: 100vw;
 
   // font-family: "Fira-Code-Regular";
   font-family: "Montserrat-Regular";
@@ -56,7 +57,7 @@
     transition: all 0.2s ease-in;
     visibility: visible;
     position: relative;
-    z-index: -1;
+    z-index: 0;
     @include abv820px {
       margin-left: 20px;
     }

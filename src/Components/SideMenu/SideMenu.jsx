@@ -102,15 +102,18 @@ export default function SideMenu(reactProps) {
                   key="burger"
                   onClick={() => {
                     reactProps.toggleOpenMobileMenu();
-                    clearInterval(timerId);
-                    setBlinkStyle({
-                      background: "#94998d"
-                    });
+                    if (timerId) {
+                      clearInterval(timerId);
+                      timerId = null;
+                      setBlinkStyle({
+                        background: "#94998d"
+                      });
+                    }
                   }}
                   className={"side-menu__burger-wrapper"}
                 >
                   <animated.span
-                    style={Object.assign({}, blinkStyle, props)}
+                    style={Object.assign({}, props, blinkStyle)}
                     className={
                       !reactProps.openMobileMenu
                         ? "side-menu__burger"
