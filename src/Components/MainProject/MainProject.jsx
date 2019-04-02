@@ -108,7 +108,7 @@ export default function MainProject(props) {
         {trail.map(({ ...rest }, i) => (
           <animated.div
             key={i}
-            style={{ ...rest }}
+            style={Object.assign({}, { ...rest }, { color: "#B45B01" })}
             className="main-project__title__element"
           >
             {revealElements[i]}
@@ -118,7 +118,7 @@ export default function MainProject(props) {
       {techStackTitleTransition.map(({ props, key }) => (
         <animated.span
           key={key}
-          style={props}
+          style={Object.assign({}, props, { color: "#FBAD5D" })}
           className="main-project__tech-stack-title"
         >
           Tech Stack used in the project
@@ -141,7 +141,7 @@ export default function MainProject(props) {
 
             <div className="main-project__desktop-view__img">
               <animated.img
-                width="350px"
+                width="340px"
                 style={props}
                 src={DeskopView}
                 alt=""

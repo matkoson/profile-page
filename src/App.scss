@@ -1,15 +1,21 @@
 @import "./Components/Mixins.scss";
 
+// @font-face {
+//   font-family: "Fira-Code-Light";
+//   src: local("Fira-Code-Light"), url("./assets/fonts/FiraCode-Light.woff2") format("woff2"),
+//     url("./assets/fonts/FiraCode-Light.woff2") format("woff");
+//   font-display: swap;
+// }
+// @font-face {
+//   font-family: "Fira-Code-Regular";
+//   src: local("Fira-Code-Regular"), url("./assets/fonts/FiraCode-Regular.woff2") format("woff2"),
+//     url("./assets/fonts/FiraCode-Regular.woff2") format("woff");
+//   font-display: swap;
+// }
 @font-face {
-  font-family: "Fira-Code-Light";
-  src: local("Fira-Code-Light"), url("./assets/fonts/FiraCode-Light.woff2") format("woff2"),
-    url("./assets/fonts/FiraCode-Light.woff2") format("woff");
-  font-display: swap;
-}
-@font-face {
-  font-family: "Fira-Code-Regular";
-  src: local("Fira-Code-Regular"), url("./assets/fonts/FiraCode-Regular.woff2") format("woff2"),
-    url("./assets/fonts/FiraCode-Regular.woff2") format("woff");
+  font-family: "Montserrat-Regular";
+  src: local("Montserrat-Regular"), url("./assets/fonts/Montserrat-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Montserrat-Regular.woff") format("woff");
   font-display: swap;
 }
 * {
@@ -26,7 +32,8 @@
     cursor: pointer;
   }
 
-  font-family: "Fira-Code-Regular";
+  // font-family: "Fira-Code-Regular";
+  font-family: "Montserrat-Regular";
   color: #fff;
   max-width: 100%;
   // overflow: hidden;
@@ -48,6 +55,8 @@
     margin-top: 60px;
     transition: all 0.2s ease-in;
     visibility: visible;
+    position: relative;
+    z-index: -1;
     @include abv820px {
       margin-left: 20px;
     }

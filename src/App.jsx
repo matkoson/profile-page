@@ -64,7 +64,9 @@ export default function App() {
           className={"app__tab-title "}
           cursor={{ show: false }}
         >
-          {!openMobileMenu && <span>{tabTitle}</span>}
+          {!openMobileMenu && (
+            <span style={{ color: "#89898d" }}>{tabTitle}</span>
+          )}
         </Typist>
       </div>
       <SideMenu
@@ -77,7 +79,9 @@ export default function App() {
           setActiveMenuItem(e.currentTarget.id);
           setOpenMobileMenu(false);
         }}
-        toggleOpenMobileMenu={() => setOpenMobileMenu(!openMobileMenu)}
+        toggleOpenMobileMenu={() => {
+          setOpenMobileMenu(!openMobileMenu);
+        }}
       />
       <div
         className={

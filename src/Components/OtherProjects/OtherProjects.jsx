@@ -13,22 +13,25 @@ export default function OtherProjects(reactProps) {
   const items = [
     {
       src: MobileDrumMachine,
-      name: "mobile-drum-machine",
-      href: "https://github.com/matkoson/FCC-drum-machine"
+      name: "Drum Machine",
+      href: "https://github.com/matkoson/FCC-drum-machine",
+      text: "Swipe left ⬅"
     },
     {
       src: MobileJavaScriptCalculator,
-      name: "mobile-js-calc",
-      href: "https://github.com/matkoson/FCC-javaScript-calculator"
+      name: "React Calculator",
+      href: "https://github.com/matkoson/FCC-javaScript-calculator",
+      text: "Swipe left ⬅"
     },
     {
       src: MobilePomodoroClock,
-      name: "mobile-pomodoro-clock",
-      href: "https://github.com/matkoson/FCC-pomodoro-clock"
+      name: "Pomodoro Clock",
+      href: "https://github.com/matkoson/FCC-pomodoro-clock",
+      text: "Swipe left ⬅"
     },
     {
       src: PortfolioPage,
-      name: "portfolio-page",
+      name: "Portfolio Page",
       href: "https://github.com/matkoson/profile-page"
     }
   ];
@@ -76,6 +79,9 @@ export default function OtherProjects(reactProps) {
           className="other-projects__swap-wrapper"
         >
           <div className="other-projects__swap-wrapper__join-wrapper  ">
+            <span className="other-projects__swap-wrapper__join-wrapper__text">
+              {items[i].text && items[i].text}
+            </span>
             <div className="other-projects__swap-wrapper__join-wrapper__img">
               {items[i].src ? (
                 <animated.img
@@ -96,7 +102,8 @@ export default function OtherProjects(reactProps) {
             </div>
             <a target="_blank" rel="noopener noreferrer" href={items[i].href}>
               <div className="other-projects__swap-wrapper__join-wrapper__code-source">
-                <img height="120px" width="120px" src={GITHUB} alt="" />
+                <span>{items[i].name}</span>
+                <img height="100px" width="100px" src={GITHUB} alt="" />
                 <span>GitHub repository + live version</span>
               </div>
             </a>

@@ -27,12 +27,18 @@ export default function Certification(reactProps) {
           src={FFC}
           alt=""
         />
-        <h2 className="certification__title certification__FCC__title">
+        <h2
+          className="certification__title certification__FCC__title"
+          style={{ color: "#E5BB98" }}
+        >
           FreeCodeCamp
         </h2>
       </div>
       <ul className="certification__list">
-        <animated.h3 style={props} className="certification__list__prompt">
+        <animated.h3
+          style={Object.assign({}, props, { color: "#9C336D" })}
+          className="certification__list__prompt"
+        >
           Click on a title to see the certificate
         </animated.h3>
         <li className="certification__list__item">
@@ -64,8 +70,11 @@ export default function Certification(reactProps) {
           </a>
         </li>
       </ul>
-      <Typist className="certification__title">
-        <strong className="certification__social-accounts">
+      <Typist cursor={{ hideWhenDone: true }} className="certification__title">
+        <strong
+          className="certification__social-accounts"
+          style={{ color: "#E5BB98" }}
+        >
           Social Media Accounts
         </strong>
       </Typist>

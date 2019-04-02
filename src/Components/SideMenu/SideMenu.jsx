@@ -36,7 +36,7 @@ export default function SideMenu(reactProps) {
         : setBlinkStyle({ background: "red" });
   };
   useInterval(cb, 3000);
-
+  console.log(reactProps.openMobileMenu);
   let menuItems = [
     ["Introduction", "introduction"],
     ["Certification", "certification"],
@@ -48,6 +48,7 @@ export default function SideMenu(reactProps) {
     from: { opacity: 0, transform: "translate3d(40px,0,0)" },
     enter: { opacity: 1, transform: "translate3d(0,0,0px)" }
   });
+  // console.log(reactProps.showMobileMenu);
   const burgerInbound = useTransition(reactProps.showMobileMenu, null, {
     from: { width: "0px" },
     enter: { width: "30px" }

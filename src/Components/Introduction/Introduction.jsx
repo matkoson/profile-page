@@ -3,18 +3,9 @@ import Typist from "react-typist";
 import "react-typist/dist/Typist.css";
 import "./Introduction.scss";
 export default function Introduction(props) {
-  return (
-    <div className="introduction">
-      <div
-        style={props.opacityDimmer ? props.opacityDimmer : null}
-        className="introduction__text-content"
-      >
-        <Typist
-          avgTypingDelay={40}
-          onTypingDone={props.typingDoneCB}
-          onCharacterTyped={props.setShowMobileMenu}
-          cursor={{ hideWhenDone: true, hideWhenDoneDelay: 3000 }}
-        >
+  return <div className="introduction">
+      <div style={props.opacityDimmer ? props.opacityDimmer : null} className="introduction__text-content">
+        <Typist avgTypingDelay={40} onTypingDone={props.typingDoneCB} onCharacterTyped={props.setShowMobileMenu} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 3000 }}>
           <Typist.Delay ms={1500} />
           <span>Hello there,</span>
           <br />
@@ -24,8 +15,11 @@ export default function Introduction(props) {
           <br />
           <br />
           <span>
-            I identify myself as a self-tought{" "}
-            <span style={{ color: "#F5DE19" }}>JavaScript</span> developer.
+            I identify myself as a self-tought <span
+              style={{ color: "#FBAD5D" }}
+            >
+              JavaScript
+            </span> developer.
           </span>
           <Typist.Delay ms={1500} />
           <br />
@@ -45,6 +39,5 @@ export default function Introduction(props) {
           </span>
         </Typist>
       </div>
-    </div>
-  );
+    </div>;
 }
