@@ -19,9 +19,6 @@ export default function Certification(reactProps) {
   });
   return (
     <div className="certification">
-      <Typist>
-        <span>Certification</span>
-      </Typist>
       <div className="certification__FCC">
         <img
           width="120px"
