@@ -25,8 +25,10 @@ export default function MainProject(props) {
   const gifTransitionRef = useRef();
   const desktopViewTransitionRef = useRef();
   //
+  console.log(window.innerWidth);
+  // debugger;
   const imgMeasurements =
-    window.innerWidth < 820
+    window.outerWidth < 820
       ? { width: "150px", height: "150px" }
       : { width: "300px", height: "300px" };
   const { height, width } = imgMeasurements;

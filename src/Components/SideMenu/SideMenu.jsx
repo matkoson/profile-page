@@ -26,12 +26,12 @@ function useInterval(callback, delay) {
 }
 var timerId;
 export default function SideMenu(reactProps) {
-  const [blinkStyle, setBlinkStyle] = useState({ background: "#94998d" });
+  const [blinkStyle, setBlinkStyle] = useState({ background: "ffe5db" });
   const cb = () => {
     if (reactProps.blinkBurger)
       blinkStyle.background === "red"
         ? setBlinkStyle({
-            background: "#94998d"
+            background: "#ffe5db"
           })
         : setBlinkStyle({ background: "red" });
   };
@@ -85,7 +85,7 @@ export default function SideMenu(reactProps) {
   });
   return (
     <div className="side-menu" key="side-menu">
-      {window.innerWidth > 820 ? (
+      {window.outerWidth > 820 ? (
         <React.Fragment key="desktop">
           {transition.map(({ props }) => (
             <animated.div key="side-menuabv820" style={props}>

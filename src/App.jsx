@@ -6,6 +6,7 @@ import Certification from "./Components/Certification/Certification";
 import MainProject from "./Components/MainProject/MainProject";
 import OtherProjects from "./Components/OtherProjects/OtherProjects";
 import Typist from "react-typist";
+import Contact from "./Components/Contact/Contact";
 
 let navigateTo,
   tabTitle = "";
@@ -34,6 +35,10 @@ export default function App() {
     case "other-projects":
       navigateTo = <OtherProjects />;
       tabTitle = "Other Projects";
+      break;
+    case "contact":
+      navigateTo = <Contact />;
+      tabTitle = "Contact";
       break;
     default:
       navigateTo = (

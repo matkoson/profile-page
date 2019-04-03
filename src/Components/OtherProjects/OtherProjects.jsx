@@ -69,7 +69,10 @@ export default function OtherProjects(reactProps) {
 
   return (
     <div className="other-projects">
-      <div className="other-projects__slider-wrapper">
+      <div
+        className="other-projects__slider-wrapper"
+        style={{ maxWidth: "100vw" }}
+      >
         {sliderProps.map(({ x, display, sc }, i) => (
           <animated.div
             {...bind()}

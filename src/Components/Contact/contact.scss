@@ -1,0 +1,23 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #ffe5db;
+  &__img {
+    color: #a37c60;
+    margin-bottom: 20px;
+  }
+  &__mail {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+    align-items: center;
+  }
+  &__phone {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
