@@ -15,7 +15,7 @@ export default function Introduction(props) {
           <br />
           <br />
           <span>
-            I identify myself as a self-tought <span
+            I identify myself as a self-taught <span
               style={{ color: "#FBAD5D" }}
             >
               JavaScript
