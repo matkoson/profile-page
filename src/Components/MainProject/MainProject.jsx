@@ -30,7 +30,7 @@ export default function MainProject(props) {
   const imgMeasurements =
     window.outerWidth < 820
       ? { width: "150px", height: "150px" }
-      : { width: "300px", height: "300px" };
+      : { width: "250px", height: "250px" };
   const { height, width } = imgMeasurements;
   //
   const logoTransition = useTransition(null, null, {

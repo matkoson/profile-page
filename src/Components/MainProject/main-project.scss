@@ -1,3 +1,5 @@
+@import "../Mixins.scss";
+
 @font-face {
   font-family: "Anodina-Light";
   src: local("Anodina-Light"), url("../../assets/fonts/Anodina-Light.woff2") format("woff2"),
@@ -12,6 +14,9 @@
   max-width: 100%;
   width: 100%;
   background-color: black;
+  @include abv820px {
+    background-color: unset;
+  }
   &__tech-stack-title {
     margin-bottom: 15px;
   }

@@ -19,7 +19,7 @@ export default function App() {
   const [showDesktopMenu, setShowDesktopMenu] = useState(false);
   const [lettersCounter, setLettersCounter] = useState(0);
   const [opacityDimmer, setOpacityDimmer] = useState(null);
-  const [blinkBurger, setBlinkBurger] = useState(false);
+  const [blink, setBlink] = useState(false);
   //
   //
 
@@ -41,52 +41,74 @@ export default function App() {
       tabTitle = "Contact";
       break;
     default:
+      tabTitle = "Introduction";
       navigateTo = (
         <Introduction
           opacityDimmer={opacityDimmer}
+          showDesktopMenu={showDesktopMenu}
           typingDoneCB={() => {
-            if (window.innerWidth < 820) {
+            if (window.outerWidth < 820) {
               setOpacityDimmer({ opacity: 0.4 });
-              setBlinkBurger(true);
+            } else {
+              setColorMenu(true);
             }
+            setBlink(true);
           }}
           setShowMobileMenu={(char, pos) => {
             if (lettersCounter > 10) return;
             setLettersCounter(lettersCounter + 1);
-            setShowMobileMenu(lettersCounter === 10 ? true : false);
+            window.outerWidth > 820
+              ? setShowDesktopMenu(lettersCounter === 10 ? true : false)
+              : setShowMobileMenu(lettersCounter === 10 ? true : false);
           }}
         />
       );
   }
+  console.log(tabTitle);
   return (
-    <div className="app">
-      <div
-        className="app__title-wrapper"
-        style={!openMobileMenu ? { opacity: 1 } : { opacity: 0 }}
-      >
-        <Typist
-          key={tabTitle}
-          className={"app__tab-title "}
-          cursor={{ show: false }}
+    <div
+      className="app"
+      style={Object.assign(
+        {},
+        { transition: "background-color 3s ease-in" },
+        tabTitle === "Main Project"
+          ? {
+              backgroundColor: "black"
+            }
+          : { backgroundColor: "#121217" }
+      )}
+    >
+      {window.outerWidth < 820 && (
+        <div
+          className="app__title-wrapper"
+          style={!openMobileMenu ? { opacity: 1 } : { opacity: 0 }}
         >
-          {!openMobileMenu && (
-            <span style={{ color: "#89898d" }}>{tabTitle}</span>
-          )}
-        </Typist>
-      </div>
+          <Typist
+            key={tabTitle}
+            className={"app__tab-title "}
+            cursor={{ show: false }}
+          >
+            {!openMobileMenu && (
+              <span style={{ color: "#89898d" }}>{tabTitle}</span>
+            )}
+          </Typist>
+        </div>
+      )}
       <SideMenu
-        blinkBurger={blinkBurger}
-        className="side-menu"
+        blink={blink}
+        showDesktopMenu={showDesktopMenu}
         showMobileMenu={showMobileMenu}
         openMobileMenu={openMobileMenu}
         activeMenuItem={activeMenuItem}
-        toggleAcriveMenuItem={e => {
+        toggleActiveMenuItem={e => {
           setActiveMenuItem(e.currentTarget.id);
           setOpenMobileMenu(false);
+          setColorMenu(true);
         }}
         toggleOpenMobileMenu={() => {
           setOpenMobileMenu(!openMobileMenu);
         }}
+        colorMenu={colorMenu}
       />
       <div
         className={
