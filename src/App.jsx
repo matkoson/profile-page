@@ -69,12 +69,14 @@ export default function App() {
       className="app"
       style={Object.assign(
         {},
-        { transition: "background-color 3s ease-in" },
         tabTitle === "Main Project"
           ? {
-              backgroundColor: "black"
+              backgroundColor: "black",
+              transition: "background-color 3s ease-in"
             }
-          : { backgroundColor: "#121217" }
+          : {
+              backgroundColor: "#121217"
+            }
       )}
     >
       {window.outerWidth < 820 && (
@@ -100,9 +102,11 @@ export default function App() {
         openMobileMenu={openMobileMenu}
         activeMenuItem={activeMenuItem}
         toggleActiveMenuItem={e => {
+          console.log(e);
           setActiveMenuItem(e.currentTarget.id);
           setOpenMobileMenu(false);
           setColorMenu(true);
+          setBlink(false);
         }}
         toggleOpenMobileMenu={() => {
           setOpenMobileMenu(!openMobileMenu);

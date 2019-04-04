@@ -55,7 +55,7 @@ export default function Contact(reactProps) {
         ))}
         {typePhone && (
           <Typist cursor={{ show: false }}>
-            <span>000 000 000</span>
+            <span>664 614 844</span>
           </Typist>
         )}
       </div>

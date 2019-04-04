@@ -167,6 +167,11 @@ export default function MainProject(props) {
           rel="noopener noreferrer"
           href="https://react-spotify-client.firebaseapp.com"
           className="main-project__code-sources__img-title"
+          onClick={() =>
+            alert(
+              "Login: mateusz.koson@hotmail.com\nPassword: reactSpotify2019"
+            )
+          }
         >
           <img height="150px" width="150px" src={FIREBASE} alt="" />
           <span>Live</span>

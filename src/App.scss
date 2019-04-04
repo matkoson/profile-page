@@ -25,9 +25,10 @@
   max-width: 100%;
   @include abv820px {
     margin: 0 auto;
-    // margin-top: 40px;
     width: 100vw;
     height: 100%;
+    display: flex;
+    justify-content: center;
   }
   &__title-wrapper {
     transition: all 0.3s ease-in;
@@ -44,11 +45,13 @@
     visibility: visible;
     position: relative;
     z-index: 0;
+    overflow-x: hidden;
     @include abv820px {
       margin-left: 20px;
       width: 90%;
       max-width: 800px;
       margin-top: 0;
+      overflow-x: unset;
       // padding-top: 60px;
     }
     &--fading-out {

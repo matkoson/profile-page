@@ -95,7 +95,7 @@ export default function SideMenu(reactProps) {
         liItem = (
           <span
             style={
-              e[0] === "Main Project" && blink && window.outerWidth > 820
+              e[0] === "Main Project" && blink
                 ? {
                     color: blinkStyle.background,
                     transition: "color 2s ease-in"
@@ -111,7 +111,16 @@ export default function SideMenu(reactProps) {
       return (
         <div
           key={e[1]}
-          onClick={toggleActiveMenuItem}
+          onClick={e => {
+            toggleActiveMenuItem(e);
+            if (timerId) {
+              clearInterval(timerId);
+              timerId = null;
+              setBlinkStyle({
+                background: "#94998d"
+              });
+            }
+          }}
           className={`side-menu${adequateClass}__item`}
           id={e[1]}
           style={colorMenu ? { opacity: 1 } : { opacity: 0.6 }}
@@ -161,18 +170,11 @@ export default function SideMenu(reactProps) {
                   key="burger"
                   onClick={() => {
                     toggleOpenMobileMenu();
-                    if (timerId) {
-                      clearInterval(timerId);
-                      timerId = null;
-                      setBlinkStyle({
-                        background: "#94998d"
-                      });
-                    }
                   }}
                   className={"side-menu__burger-wrapper"}
                 >
                   <animated.span
-                    style={Object.assign({}, props, blinkStyle)}
+                    style={Object.assign({}, props, blink && blinkStyle)}
                     className={
                       !openMobileMenu
                         ? "side-menu__burger"
