@@ -64,7 +64,6 @@ export default function App() {
         />
       );
   }
-  console.log(tabTitle);
   return (
     <div
       className="app"

@@ -141,14 +141,13 @@ export default function MainProject(props) {
               Desktop view
             </animated.span>
 
-            <div className="main-project__desktop-view__img">
-              <animated.img
-                width="340px"
-                style={props}
-                src={DeskopView}
-                alt=""
-              />
-            </div>
+            <animated.img
+              width="340px"
+              style={props}
+              src={DeskopView}
+              alt=""
+              className="main-project__desktop-view__img"
+            />
           </React.Fragment>
         ))}
       </div>
@@ -170,7 +169,7 @@ export default function MainProject(props) {
           className="main-project__code-sources__img-title"
         >
           <img height="150px" width="150px" src={FIREBASE} alt="" />
-          <span>Deployed</span>
+          <span>Live</span>
         </a>
       </div>
     </div>

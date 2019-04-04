@@ -28,7 +28,7 @@ export default function TechStack(reactProps) {
     <div className="tech-stack">
       <div className="tech-stack__left">
         {transitionsLeft.map(({ props, item, key }) => (
-          <Fragment key={key}>
+          <div className="tech-stack__wrapper" key={key}>
             <animated.img
               style={Object.assign({}, { marginRight: "5px" }, props)}
               src={item.src}
@@ -47,12 +47,12 @@ export default function TechStack(reactProps) {
             >
               {item.name}
             </animated.span>
-          </Fragment>
+          </div>
         ))}
       </div>
       <div className="tech-stack__right">
         {transitionsRight.map(({ props, item, key }) => (
-          <Fragment key={key}>
+          <div className="tech-stack__wrapper" key={key}>
             <animated.img
               style={Object.assign({}, { marginLeft: "5px" }, props)}
               src={item.src}
@@ -71,7 +71,7 @@ export default function TechStack(reactProps) {
             >
               {item.name}
             </animated.span>
-          </Fragment>
+          </div>
         ))}
       </div>
     </div>

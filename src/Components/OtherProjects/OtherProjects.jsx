@@ -19,12 +19,6 @@ export default function OtherProjects(reactProps) {
       width: "210px"
     },
     {
-      src: MobileDrumMachine,
-      name: "Drum Machine",
-      href: "https://github.com/matkoson/FCC-drum-machine",
-      text: "Swipe left ⬅"
-    },
-    {
       src: MobileJavaScriptCalculator,
       name: "React Calculator",
       href: "https://github.com/matkoson/FCC-javaScript-calculator",
@@ -33,18 +27,25 @@ export default function OtherProjects(reactProps) {
     {
       src: MobilePomodoroClock,
       name: "Pomodoro Clock",
-      href: "https://github.com/matkoson/FCC-pomodoro-clock"
+      href: "https://github.com/matkoson/FCC-pomodoro-clock",
+      text: "Swipe left ⬅"
+    },
+    {
+      src: MobileDrumMachine,
+      name: "Drum Machine",
+      href: "https://github.com/matkoson/FCC-drum-machine",
+      text: "Swipe right ➡"
     }
   ];
   const index = useRef(0);
   const [sliderProps, setSliderProps] = useSprings(items.length, i => ({
-    x: i * window.innerWidth,
+    x: i * 360,
     sc: 1,
     display: "block"
   }));
   const bind = useGesture(
     ({ down, delta: [xDelta], direction: [xDir], distance, cancel }) => {
-      if (down && distance > window.innerWidth / 2) {
+      if (down && distance > 360 / 2) {
         cancel(
           (index.current = clamp(
             index.current + (xDir > 0 ? -1 : 1),
@@ -56,8 +57,8 @@ export default function OtherProjects(reactProps) {
       setSliderProps(i => {
         if (i < index.current - 1 && i > index.current + 1)
           return { display: "none" };
-        const x = (i - index.current) * window.innerWidth + (down ? xDelta : 0);
-        const sc = down ? 1 - distance / window.innerWidth / 2 : 1;
+        const x = (i - index.current) * 360 + (down ? xDelta : 0);
+        const sc = down ? 1 - distance / 360 / 2 : 1;
         return {
           x,
           sc,
@@ -87,17 +88,15 @@ export default function OtherProjects(reactProps) {
               <span className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__text">
                 {items[i].text && items[i].text}
               </span>
-              <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img">
-                {
-                  <animated.img
-                    height="380px"
-                    width={items[i].width ? items[i].width : "280px"}
-                    src={items[i].src}
-                    alt=""
-                    className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img__item"
-                  />
-                }
-              </div>
+              <animated.img
+                height="380px"
+                width={items[i].width ? items[i].width : "280px"}
+                src={items[i].src}
+                alt=""
+                // className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img__item"
+                className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img"
+              />
+
               <a target="_blank" rel="noopener noreferrer" href={items[i].href}>
                 <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__code-source">
                   <span>{items[i].name}</span>

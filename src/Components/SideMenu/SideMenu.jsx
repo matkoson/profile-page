@@ -26,7 +26,7 @@ function useInterval(callback, delay) {
 }
 var timerId;
 export default function SideMenu(reactProps) {
-  const [blinkStyle, setBlinkStyle] = useState({ background: "ffe5db" });
+  const [blinkStyle, setBlinkStyle] = useState({ background: "#ffe5db" });
   const {
     blink,
     showDesktopMenu,
@@ -38,15 +38,16 @@ export default function SideMenu(reactProps) {
     openMobileMenu
   } = reactProps;
   const cb = () => {
-    if (window.outerWidth < 802) {
-      if (blink)
-        blinkStyle.background === "red"
-          ? setBlinkStyle({
-              background: "#ffe5db"
-            })
-          : setBlinkStyle({ background: "red" });
-    } else {
-    }
+    if (blink)
+      blinkStyle.background === "red"
+        ? setBlinkStyle(
+            window.outerWidth > 820
+              ? { background: "#968680" }
+              : {
+                  background: "#ffe5db"
+                }
+          )
+        : setBlinkStyle({ background: "red" });
   };
   useInterval(cb, 3000);
   let menuItems = [
@@ -95,7 +96,10 @@ export default function SideMenu(reactProps) {
           <span
             style={
               e[0] === "Main Project" && blink && window.outerWidth > 820
-                ? { color: blinkStyle.background }
+                ? {
+                    color: blinkStyle.background,
+                    transition: "color 2s ease-in"
+                  }
                 : { color: "#968680" }
             }
             className={`side-menu${adequateClass}__item__text`}
@@ -117,7 +121,6 @@ export default function SideMenu(reactProps) {
       );
     });
   const { width, height } = { width: "100%", height: "100%" };
-  console.log(showMobileMenu);
   return (
     <div className="side-menu" key="side-menu">
       {window.innerWidth > 820
