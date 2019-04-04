@@ -1,15 +1,27 @@
+@import "../../Mixins.scss";
+@import "../../Mixins.scss";
+
 .tech-stack {
   display: flex;
   justify-content: center;
   width: 100%;
-  z-index: -1;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
   &__left {
     display: flex;
     flex-direction: column;
+    @include abv820px {
+      flex-direction: row;
+    }
   }
   &__right {
     display: flex;
     flex-direction: column;
+    @include abv820px {
+      flex-direction: row;
+    }
   }
   &__item {
     width: 100vw;

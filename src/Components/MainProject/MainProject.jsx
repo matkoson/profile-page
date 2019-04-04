@@ -25,10 +25,12 @@ export default function MainProject(props) {
   const gifTransitionRef = useRef();
   const desktopViewTransitionRef = useRef();
   //
+  console.log(window.innerWidth);
+  // debugger;
   const imgMeasurements =
-    window.innerWidth < 820
+    window.outerWidth < 820
       ? { width: "150px", height: "150px" }
-      : { width: "300px", height: "300px" };
+      : { width: "250px", height: "250px" };
   const { height, width } = imgMeasurements;
   //
   const logoTransition = useTransition(null, null, {
@@ -108,7 +110,7 @@ export default function MainProject(props) {
         {trail.map(({ ...rest }, i) => (
           <animated.div
             key={i}
-            style={{ ...rest }}
+            style={Object.assign({}, { ...rest }, { color: "#B45B01" })}
             className="main-project__title__element"
           >
             {revealElements[i]}
@@ -118,7 +120,7 @@ export default function MainProject(props) {
       {techStackTitleTransition.map(({ props, key }) => (
         <animated.span
           key={key}
-          style={props}
+          style={Object.assign({}, props, { color: "#FBAD5D" })}
           className="main-project__tech-stack-title"
         >
           Tech Stack used in the project
@@ -139,14 +141,13 @@ export default function MainProject(props) {
               Desktop view
             </animated.span>
 
-            <div className="main-project__desktop-view__img">
-              <animated.img
-                width="350px"
-                style={props}
-                src={DeskopView}
-                alt=""
-              />
-            </div>
+            <animated.img
+              width="340px"
+              style={props}
+              src={DeskopView}
+              alt=""
+              className="main-project__desktop-view__img"
+            />
           </React.Fragment>
         ))}
       </div>
@@ -166,9 +167,14 @@ export default function MainProject(props) {
           rel="noopener noreferrer"
           href="https://react-spotify-client.firebaseapp.com"
           className="main-project__code-sources__img-title"
+          onClick={() =>
+            alert(
+              "Login: mateusz.koson@hotmail.com\nPassword: reactSpotify2019"
+            )
+          }
         >
           <img height="150px" width="150px" src={FIREBASE} alt="" />
-          <span>Deployed</span>
+          <span>Live</span>
         </a>
       </div>
     </div>

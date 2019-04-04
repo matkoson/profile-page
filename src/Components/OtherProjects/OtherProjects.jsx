@@ -12,35 +12,40 @@ import GITHUB from "../../assets/SVG/github-brands.svg";
 export default function OtherProjects(reactProps) {
   const items = [
     {
-      src: MobileDrumMachine,
-      name: "mobile-drum-machine",
-      href: "https://github.com/matkoson/FCC-drum-machine"
+      src: PortfolioPage,
+      name: "Portfolio Page",
+      href: "https://github.com/matkoson/profile-page",
+      text: "Swipe left ⬅",
+      width: "210px"
     },
     {
       src: MobileJavaScriptCalculator,
-      name: "mobile-js-calc",
-      href: "https://github.com/matkoson/FCC-javaScript-calculator"
+      name: "React Calculator",
+      href: "https://github.com/matkoson/FCC-javaScript-calculator",
+      text: "Swipe left ⬅"
     },
     {
       src: MobilePomodoroClock,
-      name: "mobile-pomodoro-clock",
-      href: "https://github.com/matkoson/FCC-pomodoro-clock"
+      name: "Pomodoro Clock",
+      href: "https://github.com/matkoson/FCC-pomodoro-clock",
+      text: "Swipe left ⬅"
     },
     {
-      src: PortfolioPage,
-      name: "portfolio-page",
-      href: "https://github.com/matkoson/profile-page"
+      src: MobileDrumMachine,
+      name: "Drum Machine",
+      href: "https://github.com/matkoson/FCC-drum-machine",
+      text: "Swipe right ➡"
     }
   ];
   const index = useRef(0);
   const [sliderProps, setSliderProps] = useSprings(items.length, i => ({
-    x: i * window.innerWidth,
+    x: i * 360,
     sc: 1,
     display: "block"
   }));
   const bind = useGesture(
     ({ down, delta: [xDelta], direction: [xDir], distance, cancel }) => {
-      if (down && distance > window.innerWidth / 2) {
+      if (down && distance > 360 / 2) {
         cancel(
           (index.current = clamp(
             index.current + (xDir > 0 ? -1 : 1),
@@ -52,8 +57,8 @@ export default function OtherProjects(reactProps) {
       setSliderProps(i => {
         if (i < index.current - 1 && i > index.current + 1)
           return { display: "none" };
-        const x = (i - index.current) * window.innerWidth + (down ? xDelta : 0);
-        const sc = down ? 1 - distance / window.innerWidth / 2 : 1;
+        const x = (i - index.current) * 360 + (down ? xDelta : 0);
+        const sc = down ? 1 - distance / 360 / 2 : 1;
         return {
           x,
           sc,
@@ -65,44 +70,44 @@ export default function OtherProjects(reactProps) {
 
   return (
     <div className="other-projects">
-      {sliderProps.map(({ x, display, sc }, i) => (
-        <animated.div
-          {...bind()}
-          key={i}
-          style={{
-            display,
-            transform: x.interpolate(x => `translate3d(${x}px,0,0)`)
-          }}
-          className="other-projects__swap-wrapper"
-        >
-          <div className="other-projects__swap-wrapper__join-wrapper  ">
-            <div className="other-projects__swap-wrapper__join-wrapper__img">
-              {items[i].src ? (
-                <animated.img
-                  height="380px"
-                  width="280px"
-                  src={items[i].src}
-                  alt=""
-                  className="other-projects__swap-wrapper__join-wrapper__img__item"
-                />
-              ) : (
-                <div
-                  className="other-projects__swap-wrapper__join-wrapper__img__item"
-                  style={{ height: "380px", width: "280px" }}
-                >
-                  This page
+      <div
+        className="other-projects__slider-wrapper"
+        style={{ maxWidth: "100vw" }}
+      >
+        {sliderProps.map(({ x, display, sc }, i) => (
+          <animated.div
+            {...bind()}
+            key={i}
+            style={{
+              display,
+              transform: x.interpolate(x => `translate3d(${x}px,0,0)`)
+            }}
+            className="other-projects__slider-wrapper__swap-wrapper"
+          >
+            <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper  ">
+              <span className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__text">
+                {items[i].text && items[i].text}
+              </span>
+              <animated.img
+                height="380px"
+                width={items[i].width ? items[i].width : "280px"}
+                src={items[i].src}
+                alt=""
+                // className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img__item"
+                className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img"
+              />
+
+              <a target="_blank" rel="noopener noreferrer" href={items[i].href}>
+                <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__code-source">
+                  <span>{items[i].name}</span>
+                  <img height="100px" width="100px" src={GITHUB} alt="" />
+                  <span>GitHub repository + live version</span>
                 </div>
-              )}
+              </a>
             </div>
-            <a target="_blank" rel="noopener noreferrer" href={items[i].href}>
-              <div className="other-projects__swap-wrapper__join-wrapper__code-source">
-                <img height="120px" width="120px" src={GITHUB} alt="" />
-                <span>GitHub repository + live version</span>
-              </div>
-            </a>
-          </div>
-        </animated.div>
-      ))}
+          </animated.div>
+        ))}
+      </div>
     </div>
   );
 }
