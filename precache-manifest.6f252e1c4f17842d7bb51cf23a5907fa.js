@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/profile-page/static/media/react-brands.cc8832a8.svg"
   },
   {
-    "revision": "0bd931de5297788e9b8a",
+    "revision": "2ceb0166c2a77be1b9a4",
     "url": "/profile-page/static/css/main.f5698bde.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/profile-page/static/js/runtime~main.0b8c03d0.js"
   },
   {
-    "revision": "1ce2212fc3f21bea9970e1c99f454fa2",
-    "url": "/profile-page/static/media/Anodina-Light.1ce2212f.woff2"
+    "revision": "be7bb0cffd80d0f422eff4af95e0cfb0",
+    "url": "/profile-page/static/media/Anodina-Light.be7bb0cf.woff"
   },
   {
     "revision": "75c0205e8508cf598264",
@@ -52,8 +52,8 @@ self.__precacheManifest = [
     "url": "/profile-page/static/media/optimizedMobileGIF3.de2b0a70.gif"
   },
   {
-    "revision": "0bd931de5297788e9b8a",
-    "url": "/profile-page/static/js/main.ee8c0463.chunk.js"
+    "revision": "2ceb0166c2a77be1b9a4",
+    "url": "/profile-page/static/js/main.0aa03c2d.chunk.js"
   },
   {
     "revision": "bfc684a1c97ff311559bc896d7653ef0",
@@ -96,15 +96,15 @@ self.__precacheManifest = [
     "url": "/profile-page/static/media/Montserrat-Regular.3a908757.woff"
   },
   {
-    "revision": "be7bb0cffd80d0f422eff4af95e0cfb0",
-    "url": "/profile-page/static/media/Anodina-Light.be7bb0cf.woff"
+    "revision": "1ce2212fc3f21bea9970e1c99f454fa2",
+    "url": "/profile-page/static/media/Anodina-Light.1ce2212f.woff2"
   },
   {
     "revision": "75c0205e8508cf598264",
     "url": "/profile-page/static/css/2.e09f1c3f.chunk.css"
   },
   {
-    "revision": "645d8aa6be9c67606651ab606a97e579",
+    "revision": "bd8a4be3ee114aaa5303089bce69d852",
     "url": "/profile-page/index.html"
   }
 ];
