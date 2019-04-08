@@ -60,7 +60,7 @@ export default function Certification(reactProps) {
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" className="certification__social-media__item" href="">
+          <a target="_blank" rel="noopener noreferrer" className="certification__social-media__item" href="https://www.hackerrank.com/byconradsong?hr_r=1">
             <img width="100px" height="100px" className="certification__list__item__img" src={GITHUB} alt="" />
             <span>Github</span>
           </a>
