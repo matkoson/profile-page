@@ -1,0 +1,75 @@
+@import "../Mixins.scss";
+.certification {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  align-items: center;
+  ul {
+    list-style: none;
+  }
+  a {
+    color: unset;
+    text-decoration: unset;
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__FCC {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__title {
+      margin-bottom: 55px;
+    }
+    &__logo {
+    }
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+    justify-content: center;
+    margin-bottom: 10px;
+    &__prompt {
+      position: absolute;
+      top: -40px;
+      font-size: 15px;
+      width: 100%;
+      text-align: center;
+    }
+    &__item {
+      opacity: 0.6;
+      padding-right: 10px;
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+    &__item:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+  &__social-accounts {
+    font-size: 25px;
+  }
+  &__social-media {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding-bottom: 5px;
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__item:hover {
+      cursor: pointer;
+    }
+  }
+}
