@@ -24,6 +24,12 @@ export default function MainProject(props) {
   const trailRef = useRef();
   const gifTransitionRef = useRef();
   const desktopViewTransitionRef = useRef();
+  const handleOnFirebaseClick = () => {
+    alert(
+      "Please write down/copy to clipboard the following credentials, you will need it: login: byconradsong@gmail.com, passwd: reactJestSpoko"
+    );
+    window.location.href = "https://react-spotify-client.firebaseapp.com";
+  };
   //
   console.log(window.innerWidth);
   // debugger;
@@ -164,6 +170,7 @@ export default function MainProject(props) {
         </a>
         <a
           target="_blank"
+          onClick={handleOnFirebaseClick}
           rel="noopener noreferrer"
           href="https://react-spotify-client.firebaseapp.com"
           className="main-project__code-sources__img-title"
