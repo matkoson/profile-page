@@ -85,7 +85,10 @@ export default function OtherProjects(reactProps) {
             className="other-projects__slider-wrapper__swap-wrapper"
           >
             <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper  ">
-              <span className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__text">
+              <span
+                style={{ marginBottom: "20px" }}
+                className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__text"
+              >
                 {items[i].text && items[i].text}
               </span>
               <animated.img
@@ -93,12 +96,14 @@ export default function OtherProjects(reactProps) {
                 width={items[i].width ? items[i].width : "280px"}
                 src={items[i].src}
                 alt=""
-                // className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img__item"
                 className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__img"
               />
 
               <a target="_blank" rel="noopener noreferrer" href={items[i].href}>
-                <div className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__code-source">
+                <div
+                  style={{ marginTop: "20px" }}
+                  className="other-projects__slider-wrapper__swap-wrapper__join-wrapper__code-source"
+                >
                   <span>{items[i].name}</span>
                   <img height="100px" width="100px" src={GITHUB} alt="" />
                   <span>GitHub repository + live version</span>
