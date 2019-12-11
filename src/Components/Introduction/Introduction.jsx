@@ -3,9 +3,18 @@ import Typist from "react-typist";
 import "react-typist/dist/Typist.css";
 import "./Introduction.scss";
 export default function Introduction(props) {
-  return <div className="introduction">
-      <div style={props.opacityDimmer ? props.opacityDimmer : null} className="introduction__text-content">
-        <Typist avgTypingDelay={40} onTypingDone={props.typingDoneCB} onCharacterTyped={props.setShowMobileMenu} cursor={{ hideWhenDone: true, hideWhenDoneDelay: 3000 }}>
+  return (
+    <div className="introduction">
+      <div
+        style={props.opacityDimmer ? props.opacityDimmer : null}
+        className="introduction__text-content"
+      >
+        <Typist
+          avgTypingDelay={40}
+          onTypingDone={props.typingDoneCB}
+          onCharacterTyped={props.setShowMobileMenu}
+          cursor={{ hideWhenDone: true, hideWhenDoneDelay: 3000 }}
+        >
           <Typist.Delay ms={1500} />
           <span>Hello there,</span>
           <br />
@@ -14,21 +23,19 @@ export default function Introduction(props) {
           <Typist.Delay ms={1500} />
           <br />
           <br />
-          <span>
-            I identify myself as a self-taught <span
-              style={{ color: "#FBAD5D" }}
-            >
-              JavaScript
-            </span> developer.
-          </span>
+          <div>
+            <span>I am a </span>
+            <span style={{ color: "#FBAD5D" }}>JavaScript</span> developer with
+            special feelings for
+            <p style={{ display: "inline", color: "#61dafb" }}> React</p>.
+          </div>
           <Typist.Delay ms={1500} />
           <br />
           <br />
           <br />
           <span>
-            The last year of my life was dedicated solely for becoming
-            <br />
-            an employable software programmer.
+            I dedicated one year of my life to became a software developer,
+            which luckily ended up with <br />a success :)
           </span>
           <Typist.Delay ms={1500} />
           <br />
@@ -39,5 +46,6 @@ export default function Introduction(props) {
           </span>
         </Typist>
       </div>
-    </div>;
+    </div>
+  );
 }
